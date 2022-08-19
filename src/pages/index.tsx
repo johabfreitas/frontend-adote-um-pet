@@ -8,7 +8,13 @@ const Home: NextPage = () => {
   const {
     listaPets,
     petSelecionado,
-    setPetSelecionado
+    setPetSelecionado,
+    email,
+    setEmail,
+    valor,
+    setValor,
+    mensagem,
+    setMensagem
   } = UseIndex();
 
   return (
@@ -38,6 +44,8 @@ const Home: NextPage = () => {
             label={'E-mail'} 
             type={'email'}
             fullWidth
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -45,6 +53,8 @@ const Home: NextPage = () => {
             label={'Quantia por mês'}
             type={'number'} 
             fullWidth
+            value={valor}
+            onChange={(e) => setValor(e.target.value)}
           />
         </Grid>
       </Grid>
@@ -61,8 +71,10 @@ const Home: NextPage = () => {
       </Dialog>
 
       <Snackbar 
-        open={false}
-        message={'fdfdfd dfdsfd dfdsff sdfsfsf'}
+        open={mensagem.length > 0}
+        message={mensagem}
+        autoHideDuration={2500}
+        onClose={() => setMensagem('')}
       />
     </div>
   )
